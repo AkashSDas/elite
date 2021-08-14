@@ -84,6 +84,19 @@ userSchema.method("securePassword", function (plainPassword: string): string {
   }
 });
 
+// This is a right of declaring methods for in schema
+// userSchema.methods.securePassword = function (plainPassword: string): string {
+//   if (!plainPassword) return "";
+//   try {
+//     return crypto
+//       .createHmac("sha256", this.salt)
+//       .update(plainPassword)
+//       .digest("hex");
+//   } catch (err) {
+//     return "";
+//   }
+// };
+
 // Below line will be give error, reason is not defined as per typescript
 // userSchema.method = {
 //   securePassword: function (plainPassword): string {
