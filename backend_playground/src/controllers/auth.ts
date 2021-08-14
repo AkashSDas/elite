@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { validationResult } from "express-validator";
 
 import { User } from "../models/user";
 
@@ -9,6 +10,12 @@ export function signout(req: Request, res: Response) {
 }
 
 export function signup(req: Request, res: Response) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty())
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+
   const user = new User(req.body);
   user.save((err, user) => {
     return err
