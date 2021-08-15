@@ -33,6 +33,8 @@ interface IUser extends Document {
   salt?: string;
   role: number;
   purchases: any[];
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const userSchema = new Schema<IUser>(
