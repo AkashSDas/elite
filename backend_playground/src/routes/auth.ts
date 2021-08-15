@@ -29,4 +29,5 @@ router.post("/signin", signInValidations, sigin);
 // Playground routes (testing somethings)
 // router.get("/playground", isSignedIn, (req: Request, res: Response) => {
 //   res.send("Protected route");
+//   res.send(res.auth);
 // });
