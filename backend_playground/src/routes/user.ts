@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAuthenticated, isSignedIn } from "../controllers/auth";
-import { getUser, getUserById } from "../controllers/user";
+import { getUser, getUserById, updateUser } from "../controllers/user";
 
 export const router = Router();
 
@@ -17,3 +17,5 @@ router.get("/:userId", isSignedIn, isAuthenticated, getUser);
 // var router = require("./router/user")
 
 // router.get("/all", getAllUsers);
+
+router.put("/:userId", isSignedIn, isAuthenticated, updateUser);
