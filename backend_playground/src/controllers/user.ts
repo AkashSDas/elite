@@ -52,11 +52,38 @@ export function getUser(req: Request, res: Response) {
 // }
 
 export function updateUser(req: Request, res: Response) {
+  // User.findByIdAndUpdate(
+  //   req.profile._id,
+  //   req.body,
+  //   { new: true },
+  //   (err, user) => {
+  //     console.log(err);
+  //     console.log(user);
+
+  //     // if no user is found then we'll get an error so
+  //     // no need to check for user
+  //     if (err) {
+  //       return res.status(400).json({
+  //         error: "You are not authorized to make changes",
+  //       });
+  //     }
+
+  //     user.salt = undefined;
+  //     user.encryptPassword = undefined;
+  //     user.createdAt = undefined;
+  //     user.updatedAt = undefined;
+  //     res.json(user);
+  //   }
+  // );
+
   User.findByIdAndUpdate(
     { _id: req.profile._id },
     { $set: req.body },
-    { new: true, useFindAndModify: false },
+    { new: true, useFindAndModify: true },
     (err, user) => {
+      console.log(err);
+      console.log(user);
+
       // if no user is found then we'll get an error so
       // no need to check for user
       if (err) {
