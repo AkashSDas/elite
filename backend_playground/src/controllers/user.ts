@@ -115,3 +115,38 @@ export function userPurchaseList(req: Request, res: Response) {
       return res.json(order);
     });
 }
+
+export function pushOrderInPurchaseList(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  let purchases = [];
+  req.body.order.products.forEach((product) => {
+    purchases.push({
+      _id: product._id,
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      quantity: product.quantity,
+      amount: req.body.order.amount,
+      transactionId: req.body.order.transactionId,
+    });
+  });
+
+  // store this in database
+  User.findOneAndUpdate(
+    { _id: req.profile._id },
+    { $push: { purchases: purchases } },
+    { new: true },
+    (err, purchases) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Unable to save purchase list",
+        });
+      }
+
+      next();
+    }
+  );
+}
