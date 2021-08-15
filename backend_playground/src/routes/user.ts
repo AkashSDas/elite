@@ -1,6 +1,11 @@
 import { Router } from "express";
 import { isAuthenticated, isSignedIn } from "../controllers/auth";
-import { getUser, getUserById, updateUser } from "../controllers/user";
+import {
+  getUser,
+  getUserById,
+  updateUser,
+  userPurchaseList,
+} from "../controllers/user";
 
 export const router = Router();
 
@@ -19,3 +24,4 @@ router.get("/:userId", isSignedIn, isAuthenticated, getUser);
 // router.get("/all", getAllUsers);
 
 router.put("/:userId", isSignedIn, isAuthenticated, updateUser);
+router.put("/orders/:userId", isSignedIn, isAuthenticated, userPurchaseList);

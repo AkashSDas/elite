@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { Order } from "../models/order";
 import { User } from "../models/user";
 
 // https://stackoverflow.com/questions/58200432/argument-of-type-req-request-res-iresponse-next-nextfunction-void-is
@@ -99,4 +100,18 @@ export function updateUser(req: Request, res: Response) {
       res.json(user);
     }
   );
+}
+
+export function userPurchaseList(req: Request, res: Response) {
+  Order.find({ user: req.profile._id })
+    .populate("user", "_id username")
+    .exec((err, order) => {
+      if (err) {
+        return res.status(400).json({
+          error: "No order in this user",
+        });
+      }
+
+      return res.json(order);
+    });
 }
