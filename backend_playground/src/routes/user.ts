@@ -15,3 +15,5 @@ router.get("/:userId", isSignedIn, isAuthenticated, getUser);
 // import { router as userRouter } from "./routes/user";
 // And was asking to import the router as
 // var router = require("./router/user")
+
+// router.get("/all", getAllUsers);

@@ -38,3 +38,15 @@ export function getUser(req: Request, res: Response) {
   req.profile.updatedAt = undefined;
   return res.json(req.profile);
 }
+
+// export function getAllUsers(req: Request, res: Response) {
+//   User.find().exec((err, users) => {
+//     if (err || !users) {
+//       return res.status(400).json({
+//         error: "No user found",
+//       });
+//     }
+
+//     res.json(users);
+//   });
+// }
