@@ -1,12 +1,13 @@
 import { config } from "dotenv";
-import { connect } from "mongoose";
 
-import { app } from "./api";
-
-// Environment Variables (Stripe API Key)
+// Environment Variables
 if (process.env.NODE_ENV !== "production") {
   config();
 }
+
+import { connect } from "mongoose";
+
+import { app } from "./api";
 
 // Connecting to MongoDB
 connect(process.env.MONGODB_CONNECT_URL, {
