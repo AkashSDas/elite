@@ -90,14 +90,22 @@ interface IIsAuthenticatedRequest extends Request {
   auth: any;
 }
 
+declare module "express-serve-static-core" {
+  interface Request {
+    user: any;
+    profile: any;
+    auth: any;
+  }
+}
+
 export function isAuthenticated(
-  req: IIsAuthenticatedRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ) {
   const profile = req.profile; // from front end
   const auth = req.auth; // this property is set on isSignedIn middleware (define above this middleware)
-  const sameUser = req.profile._id == req.auth._id;
+  const sameUser = req.profile._id == req.auth._id; // using double = since we are just checking the value and not the object (as they are different)
   const check = profile && auth && sameUser;
 
   if (!check) {
@@ -113,11 +121,13 @@ interface IIsAdminRequest extends Request {
   profile: any;
 }
 
-export function isAdmin(
-  req: IIsAdminRequest,
-  res: Response,
-  next: NextFunction
-) {
+declare module "express-serve-static-core" {
+  interface Request {
+    profile: any;
+  }
+}
+
+export function isAdmin(req: Request, res: Response, next: NextFunction) {
   if (req.profile.role === 0) {
     // Regular user
     return res.status(403).json({
