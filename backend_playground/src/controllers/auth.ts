@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
+import jwt from "express-jwt";
 import { validationResult } from "express-validator";
-import * as jwt from "jsonwebtoken";
+import * as jsonwebtoken from "jsonwebtoken";
 
 import { User } from "../models/user";
 
@@ -55,7 +56,7 @@ export function sigin(req: Request, res: Response) {
     }
 
     // create token
-    const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+    const token = jsonwebtoken.sign({ _id: user._id }, process.env.SECRET_KEY);
 
     // put token in cookie (for dev purpose keep expiry date long, otherwise keep it short)
     res.cookie("token", token, {
@@ -70,3 +71,10 @@ export function sigin(req: Request, res: Response) {
     });
   });
 }
+
+// Protected route
+export const isSignedIn = jwt({
+  secret: process.env.SECRET_KEY,
+  userProperty: "auth",
+  algorithms: ["HS256"],
+});

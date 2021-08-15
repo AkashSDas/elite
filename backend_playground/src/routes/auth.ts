@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import { check } from "express-validator";
 
-import { sigin, signout, signup } from "../controllers/auth";
+import { isSignedIn, sigin, signout, signup } from "../controllers/auth";
 
 export const router = Router();
 
@@ -25,3 +25,8 @@ const signInValidations = [
   }),
 ];
 router.post("/signin", signInValidations, sigin);
+
+// Playground routes (testing somethings)
+// router.get("/playground", isSignedIn, (req: Request, res: Response) => {
+//   res.send("Protected route");
+// });
