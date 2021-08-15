@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 
-import { signout, signup } from "../controllers/auth";
+import { sigin, signout, signup } from "../controllers/auth";
 
 export const router = Router();
 
@@ -17,3 +17,11 @@ const signUpValidations = [
   }),
 ];
 router.post("/signup", signUpValidations, signup);
+
+const signInValidations = [
+  check("email", "Email is required").isEmail(),
+  check("password", "Password should be atleast 6 characters").isLength({
+    min: 6,
+  }),
+];
+router.post("/signin", signInValidations, sigin);
