@@ -5,6 +5,7 @@ import express from "express";
 import { router as authRouter } from "./routes/auth";
 import { router as userRouter } from "./routes/user";
 import { router as categoryRouter } from "./routes/category";
+import { router as productRouter } from "./routes/product";
 
 // App
 export const app = express();
@@ -40,3 +41,4 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/category", categoryRouter);
+app.use("/api/product", productRouter);
