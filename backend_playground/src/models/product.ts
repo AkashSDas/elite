@@ -1,10 +1,20 @@
 // import { ObjectId } from "bson";
-import { model, Schema } from "mongoose";
+import { Document, model, Schema } from "mongoose";
 
 // Using ObjectId from bson package
 // https://stackoverflow.com/questions/53974535/why-isnt-my-mongodb-objectid-recognised-as-a-type-in-typescript
 
-const ProductSchema = new Schema(
+interface IProduct extends Document {
+  name: string;
+  description: string;
+  price: number;
+  category: any;
+  stock: number;
+  sold: number;
+  photo: any;
+}
+
+const ProductSchema = new Schema<IProduct>(
   {
     name: {
       type: String,
