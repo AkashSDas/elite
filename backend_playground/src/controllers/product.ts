@@ -204,3 +204,16 @@ export function updateProductStock(
     next();
   });
 }
+
+export function getAllUniqueCategories(req: Request, res: Response) {
+  const options = {};
+  Product.distinct("category", options, (err, category) => {
+    if (err) {
+      return res.status(400).json({
+        error: "No category found",
+      });
+    }
+
+    return res.json(category);
+  });
+}

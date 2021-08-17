@@ -7,6 +7,7 @@ import {
   deleteProduct,
   updateProduct,
   getAllProducts,
+  getAllUniqueCategories,
 } from "../controllers/product";
 import { getUserById } from "../controllers/user";
 import { isAdmin, isAuthenticated, isSignedIn } from "../controllers/auth";
@@ -49,3 +50,5 @@ router.put(
 );
 
 router.get("/", getAllProducts);
+
+router.get("/categories", getAllUniqueCategories);
