@@ -82,6 +82,7 @@ function Signup() {
               <input
                 className="form-control"
                 type="text"
+                value={username}
                 onChange={handleChange("username")}
               />
             </div>
@@ -90,6 +91,7 @@ function Signup() {
               <input
                 className="form-control"
                 type="email"
+                value={email}
                 onChange={handleChange("email")}
               />
             </div>
@@ -98,6 +100,7 @@ function Signup() {
               <input
                 className="form-control"
                 type="password"
+                value={password}
                 onChange={handleChange("password")}
               />
             </div>
