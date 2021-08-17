@@ -178,3 +178,29 @@ export function getAllProducts(req: Request, res: Response) {
       res.json(products);
     });
 }
+
+export function updateProductStock(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  let operations = req.body.order.products.map((p) => {
+    return {
+      updateOne: {
+        filter: { _id: p._id },
+        update: { $inc: { stock: -p.count, sold: +p.count } },
+      },
+    };
+  });
+
+  const options = {};
+  Product.bulkWrite(operations, options, (err, products) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Bulk operation failed",
+      });
+    }
+
+    next();
+  });
+}
