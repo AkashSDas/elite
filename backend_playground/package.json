@@ -19,6 +19,7 @@
     "@types/express-jwt": "^6.0.2",
     "@types/formidable": "^1.2.3",
     "@types/jsonwebtoken": "^8.5.4",
+    "@types/lodash": "^4.14.172",
     "concurrently": "^6.2.1",
     "nodemon": "^2.0.12",
     "typescript": "^4.3.5"
@@ -32,7 +33,7 @@
     "express-validator": "^6.12.1",
     "formidable": "^1.2.2",
     "jsonwebtoken": "^8.5.1",
-    "loadash": "^1.0.0",
+    "lodash": "^4.17.21",
     "mongoose": "^5.13.7",
     "uuid": "^8.3.2"
   }
