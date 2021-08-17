@@ -1,3 +1,5 @@
+import Navbar from "./navbar";
+
 interface Props {
   title?: string;
   description?: string;
@@ -8,6 +10,8 @@ interface Props {
 function BaseLayout(props: Props) {
   return (
     <div>
+      <Navbar />
+
       <div className="container-fluid">
         <div className="jumbotron bg-dark text-white text-center">
           <h4 className="display-4">{props.title}</h4>
