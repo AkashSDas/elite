@@ -1,5 +1,13 @@
 import { Router } from "express";
-import { createProduct, getProductById } from "../controllers/product";
+import {
+  createProduct,
+  getProduct,
+  getProductById,
+  photo,
+  deleteProduct,
+  updateProduct,
+  getAllProducts,
+} from "../controllers/product";
 import { getUserById } from "../controllers/user";
 import { isAdmin, isAuthenticated, isSignedIn } from "../controllers/auth";
 
@@ -18,3 +26,26 @@ router.post(
   isAdmin,
   createProduct
 );
+
+router.get("/:productId", getProduct);
+
+// Tmp route to get photo for a product
+router.get("/photo/:productId", photo);
+
+router.delete(
+  "/:productId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  deleteProduct
+);
+
+router.put(
+  "/:productId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  updateProduct
+);
+
+router.get("/", getAllProducts);
