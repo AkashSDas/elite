@@ -10,12 +10,32 @@ const ProductCartSchema = new Schema({
   price: Number,
 });
 
+enum OrderStatusEnum {
+  "Cancelled",
+  "Delivered",
+  "Shipped",
+  "Processing",
+  "Received",
+}
+
 const OrderSchema = new Schema(
   {
     products: [ProductCartSchema],
     transactionId: {},
     amount: { type: Number },
     address: String,
+    status: {
+      type: String,
+      default: OrderStatusEnum.Received,
+      // enum: Object.values(OrderStatusEnum),
+      enum: [
+        OrderStatusEnum.Cancelled,
+        OrderStatusEnum.Delivered,
+        OrderStatusEnum.Processing,
+        OrderStatusEnum.Received,
+        OrderStatusEnum.Shipped,
+      ],
+    },
     updated: Date,
     user: {
       type: Schema.Types.ObjectId,
