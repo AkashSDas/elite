@@ -35,7 +35,7 @@ export async function getProduct(productId: string) {
     fetchFromAPI(`/product/${productId}`, { method: "GET" })
   );
 
-  return [res.json(), err];
+  return [await res.json(), err];
 }
 
 export async function updateProduct(
