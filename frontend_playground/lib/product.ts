@@ -13,7 +13,9 @@ export async function createProduct(
         Accept: "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(product),
+
+      // passing product directly as its form data
+      body: product,
     })
   );
 
