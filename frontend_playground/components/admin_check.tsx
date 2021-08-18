@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { isAuthenticated } from "../lib/auth";
+import BaseLayout from "./base_layout";
 
 interface Props {
   children: JSX.Element;
@@ -11,12 +12,14 @@ function AdminCheck(props: Props) {
   if (isAuthenticated() && isAuthenticated().user.role === admin_condition)
     return props.children;
   return (
-    <main>
-      You are not authenticated. To login{" "}
-      <Link href="/signin">
-        <a>click here</a>
-      </Link>
-    </main>
+    <BaseLayout>
+      <main>
+        You are not authenticated. To login{" "}
+        <Link href="/signin">
+          <a>click here</a>
+        </Link>
+      </main>
+    </BaseLayout>
   );
 }
 
