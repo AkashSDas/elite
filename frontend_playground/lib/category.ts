@@ -13,7 +13,7 @@ export async function createCategory(
     })
   );
 
-  return [response.json(), error];
+  return [await response.json(), error];
 }
 
 export async function getAllCategories() {
@@ -21,5 +21,5 @@ export async function getAllCategories() {
     fetchFromAPI(`/category/`, { method: "GET" })
   );
 
-  return [res.json(), err];
+  return [await res.json(), err];
 }

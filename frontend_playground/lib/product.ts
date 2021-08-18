@@ -17,7 +17,7 @@ export async function createProduct(
     })
   );
 
-  return [response.json(), error];
+  return [await response.json(), error];
 }
 
 export async function getAllProducts() {
@@ -25,7 +25,7 @@ export async function getAllProducts() {
     fetchFromAPI(`/product/`, { method: "GET" })
   );
 
-  return [res.json(), err];
+  return [await res.json(), err];
 }
 
 export async function getProduct(productId: string) {
@@ -50,7 +50,7 @@ export async function updateProduct(
     })
   );
 
-  return [res.json(), err];
+  return [await res.json(), err];
 }
 
 export async function deleteProduct(
@@ -65,5 +65,5 @@ export async function deleteProduct(
     })
   );
 
-  return [res.json(), err];
+  return [await res.json(), err];
 }
