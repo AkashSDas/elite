@@ -1,5 +1,5 @@
-import AdminCheck from "../../components/admin_check";
-import AdminDashboard from "../../components/admin_dashboard";
+import AdminCheck from "../../../components/admin_check";
+import AdminDashboard from "../../../components/admin_dashboard";
 
 function AdminDashboardPage() {
   return (
