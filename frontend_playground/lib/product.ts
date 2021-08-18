@@ -45,9 +45,15 @@ export async function updateProduct(
   product: any
 ) {
   const [res, err] = await runAsync(
-    fetchFromAPI(`/product/${productId}/${userId}`, {
+    fetch(`${API}/product/${productId}/${userId}`, {
       method: "PUT",
-      token,
+      headers: {
+        // contentType here is not going to be application/json
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+
+      // passing product directly as its form data
       body: product,
     })
   );
