@@ -27,7 +27,22 @@ function AdminDashboard() {
     </div>
   );
 
-  const rightSection = () => <div></div>;
+  const rightSection = () => (
+    <div className="card mb-4">
+      <h4 className="card-header">Admin information</h4>
+      <ul className="list-group">
+        <li className="list-group-item">
+          <span className="badge bg-success mr-2">Username</span>: {username}
+        </li>
+        <li className="list-group-item">
+          <span className="badge bg-success mr-2">Email</span>: {email}
+        </li>
+        <li className="list-group-item">
+          <span className="badge bg-danger mr-2">Admin area</span>
+        </li>
+      </ul>
+    </div>
+  );
 
   return (
     <BaseLayout
