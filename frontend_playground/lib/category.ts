@@ -15,3 +15,11 @@ export async function createCategory(
 
   return [response.json(), error];
 }
+
+export async function getAllCategories() {
+  const [res, err] = await runAsync(
+    fetchFromAPI(`/category/`, { method: "GET" })
+  );
+
+  return [res.json(), err];
+}
