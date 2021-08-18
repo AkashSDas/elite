@@ -13,12 +13,7 @@ function AdminCheck(props: Props) {
     return props.children;
   return (
     <BaseLayout>
-      <main>
-        You are not authenticated. To login{" "}
-        <Link href="/signin">
-          <a>click here</a>
-        </Link>
-      </main>
+      <main>You cannot perform the following task as you not an admin</main>
     </BaseLayout>
   );
 }
