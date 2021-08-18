@@ -11,8 +11,13 @@ function Navbar() {
       <ul className="nav nav-tabs bg-dark">
         <NavItem href="/" text="Home" />
         <NavItem href="/cart" text="Cart" />
-        <NavItem href="/dashboard/user" text="Dashboard" />
-        <NavItem href="/dashboard/admin" text="A Dashboard" />
+
+        {isAuthenticated() && (
+          <NavItem href="/dashboard/user" text="Dashboard" />
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 1 ? (
+          <NavItem href="/dashboard/admin" text="Admin Dashboard" />
+        ) : null}
         {!isAuthenticated() && <NavItem href="/signup" text="Sign up" />}
         {!isAuthenticated() && <NavItem href="/signin" text="Sign in" />}
         {isAuthenticated() && (
