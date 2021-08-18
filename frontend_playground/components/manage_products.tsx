@@ -41,7 +41,7 @@ function ManageProducts() {
                 <h3 className="text-white text-left">{product.name}</h3>
               </div>
               <div className="col-4">
-                <Link href={`/dashboard/admin/product/update/productId`}>
+                <Link href={`/dashboard/admin/product/update/${product._id}`}>
                   <span className="btn btn-success">Update</span>
                 </Link>
               </div>
