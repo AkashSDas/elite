@@ -13,11 +13,11 @@ export function fetchFromAPI(
   endpointURL: string,
   opts: {
     method: string;
-    body: any;
+    body?: any;
+    token?: string;
   }
 ) {
-  const { method, body } = { ...opts };
-  const token = null;
+  const { method, body, token } = { ...opts };
 
   return fetch(`${API}${endpointURL}`, {
     method,

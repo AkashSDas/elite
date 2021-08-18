@@ -46,10 +46,7 @@ export const signout = async (next) => {
     next();
 
     const [response, error] = await runAsync(
-      fetchFromAPI("/auth/signin", {
-        method: "GET",
-        body: null,
-      })
+      fetchFromAPI("/auth/signin", { method: "GET" })
     );
 
     if (response) return response.json();
