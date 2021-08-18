@@ -1,10 +1,10 @@
 import AdminCheck from "../../components/admin_check";
-import UserDashboard from "../../components/user_dashboard";
+import AdminDashboard from "../../components/admin_dashboard";
 
 function AdminDashboardPage() {
   return (
     <AdminCheck>
-      <UserDashboard />
+      <AdminDashboard />
     </AdminCheck>
   );
 }
