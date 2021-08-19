@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Stripe from "stripe";
-import * as uuid from "uuid";
+import uuid from "uuid";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET, {
   apiVersion: "2020-08-27",
@@ -12,7 +12,7 @@ export async function makePayment(req: Request, res: Response) {
   let amount = 0;
   products.map((product) => (amount = amount + product.price));
 
-  const idempotencyKey = uuid();
+  const idempotencyKey = uuid.v4();
 
   const customer = await stripe.customers.create({
     email: token.email,
