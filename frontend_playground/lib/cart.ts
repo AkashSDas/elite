@@ -8,3 +8,11 @@ export function addItemToCart(item, next) {
     next();
   }
 }
+
+export function loadCart() {
+  if (typeof window !== undefined) {
+    if (localStorage.getItem("cart")) {
+      return JSON.parse(localStorage.getItem("cart"));
+    }
+  }
+}
