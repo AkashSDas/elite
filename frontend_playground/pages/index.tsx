@@ -1,7 +1,9 @@
+import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import BaseLayout from "../components/base_layout";
 import ImageHelper from "../components/image_helper";
+import { addItemToCart } from "../lib/cart";
 import { getAllProducts, getProduct } from "../lib/product";
 import styles from "../styles/Home.module.css";
 
@@ -37,11 +39,21 @@ function Index() {
 }
 
 function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
+  const [redirect, setRedirect] = useState(false);
+  const router = useRouter();
+  const getARedirect = () => (redirect ? router.push("/cart") : null);
+
+  const [count, setCount] = useState(product.count);
+
+  const addToCart = () => {
+    addItemToCart(product, () => setRedirect(true));
+  };
+
   const showAddToCartFunc = (showAddToCart) => {
     return (
       showAddToCart && (
         <button
-          onClick={() => {}}
+          onClick={addToCart}
           className="btn btn-block btn-outline-success mt-2 mb-2"
         >
           Add to Cart
@@ -70,6 +82,7 @@ function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap">
           {product.description}
+          {getARedirect()}
         </p>
         <p className="btn btn-success rounded  btn-sm px-4">${product.price}</p>
         <div className="row">
