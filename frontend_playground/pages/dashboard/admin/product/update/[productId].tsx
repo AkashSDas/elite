@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AdminCheck from "../../../../../components/admin_check";
 import BaseLayout from "../../../../../components/base_layout";
 import { isAuthenticated } from "../../../../../lib/auth";
+import { getAllCategories } from "../../../../../lib/category";
 import { getProduct, updateProduct } from "../../../../../lib/product";
 
 function UpdateProduct() {
@@ -46,6 +47,7 @@ function UpdateProduct() {
     console.log(data);
     if (data?.error) setValues({ ...values, error: data.error });
     else {
+      // await preloadCategories();
       setValues({
         ...values,
         name: data.name,
@@ -54,7 +56,29 @@ function UpdateProduct() {
         stock: data.stock,
         price: data.price,
         formData: new FormData(),
+        categories: await preloadCategories(),
       });
+    }
+  };
+
+  // const preloadCategories = async () => {
+  //   const [data, err] = await getAllCategories();
+  //   if (data.error || err) return [];
+  //   return data;
+  // };
+
+  const preloadCategories = async () => {
+    const [data, err] = await getAllCategories();
+    if (data.error || err) {
+      setValues((values) => {
+        return { ...values, error: data.error };
+      });
+      return [];
+    } else {
+      // re-initialize form data so that things update in our form (if we don't
+      // do that then it will be in our state but it won't populate new values)
+      // setValues({ ...values, categories: data, formData: new FormData() });
+      return data;
     }
   };
 
@@ -169,7 +193,9 @@ function UpdateProduct() {
           className="form-control"
           placeholder="Category"
         >
-          <option>Select</option>
+          <option>
+            {category.length > 0 ? `Category Id - ${category}` : "Select"}
+          </option>
           {categories &&
             categories.map((item, key: number) => (
               <option key={key} value={item._id}>
