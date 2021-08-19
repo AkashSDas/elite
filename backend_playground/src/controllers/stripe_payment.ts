@@ -23,7 +23,7 @@ export async function makePayment(req: Request, res: Response) {
     try {
       const result = await stripe.charges.create(
         {
-          amount,
+          amount * 100,
           currency: "inr",
           customer: customer.id,
           receipt_email: token.email,
