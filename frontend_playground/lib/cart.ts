@@ -27,3 +27,10 @@ export function removeItemFromCart(productId: string) {
     }
   }
 }
+
+export function cartEmpty(next: Function) {
+  if (typeof window !== undefined) {
+    localStorage.removeItem("cart");
+    next();
+  }
+}

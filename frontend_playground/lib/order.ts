@@ -10,10 +10,3 @@ export async function createOrder(userId: string, token: string, order: any) {
 
   return [await res.json(), err];
 }
-
-export function cartEmpty(next: Function) {
-  if (typeof window !== undefined) {
-    localStorage.removeItem("cart");
-    next();
-  }
-}
