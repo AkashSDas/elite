@@ -1,19 +1,35 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import BaseLayout from "../components/base_layout";
 import ImageHelper from "../components/image_helper";
+import { getAllProducts, getProduct } from "../lib/product";
 import styles from "../styles/Home.module.css";
 
 function Index() {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
+
+  const loadProducts = async () => {
+    const [data, err] = await getAllProducts();
+    if (data.error) setError(true);
+    else setProducts(data);
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
   return (
     <BaseLayout title="Home Page">
-      <div className="row">
-        <div className="col-4">
-          <button className="btn btn-success">TEST</button>
-        </div>
-        <div className="col-4">
-          <button className="btn btn-success">TEST</button>
-        </div>
-        <div className="col-4">
-          <button className="btn btn-success">TEST</button>
+      <div className="row mb-5">
+        <h1 className="text-white">All products</h1>
+
+        <div className="row">
+          {products.map((product, key: number) => (
+            <div key={key} className="col-4">
+              <Card product={product} />
+            </div>
+          ))}
         </div>
       </div>
     </BaseLayout>
@@ -36,7 +52,7 @@ function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
 
   const showRemoveFromCartFunc = (showRemoveFromCart) => {
     return (
-      showAddToCart && (
+      showRemoveFromCart && (
         <button
           onClick={() => {}}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
@@ -49,13 +65,13 @@ function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
 
   return (
     <div className="card text-white bg-dark border border-info ">
-      <div className="card-header lead">A photo from pexels</div>
+      <div className="card-header lead">{product.name}</div>
       <div className="card-body">
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap">
-          this photo looks great
+          {product.description}
         </p>
-        <p className="btn btn-success rounded  btn-sm px-4">$ 5</p>
+        <p className="btn btn-success rounded  btn-sm px-4">${product.price}</p>
         <div className="row">
           <div className="col-12">{showAddToCartFunc(showAddToCart)}</div>
           <div className="col-12">
