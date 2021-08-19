@@ -29,7 +29,10 @@ export async function makePayment(req: Request, res: Response) {
         submitForSettlement: true,
       },
     });
-    res.status(200).json(response);
+
+    // sending json might give errors because of formatting of json
+    // so not using json here
+    res.status(200).send(response);
   } catch (err) {
     res.status(500).send(err);
   }
