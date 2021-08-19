@@ -2,6 +2,7 @@ import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { isAuthenticated } from "../lib/auth";
 import StripeCheckout from "react-stripe-checkout";
+import { fetchFromAPI, runAsync } from "../lib/utils";
 
 function StripeCheckoutSection({
   products,
@@ -26,12 +27,28 @@ function StripeCheckoutSection({
     return amount;
   };
 
-  const makePayment = (token) => {};
+  const makePayment = async (token) => {
+    const body = {
+      token,
+      products,
+    };
+
+    const [res, err] = await runAsync(
+      fetchFromAPI(`/payments/stripe`, {
+        method: "POST",
+        body,
+      })
+    );
+
+    if (res) {
+      console.log(res);
+    } else console.log(err);
+  };
 
   const showStripeBtn = () => {
     return isAuthenticated() ? (
       <StripeCheckout
-        stripeKey=""
+        stripeKey={process.env.NEXT_PUBLIC_STRIPE_KEY}
         token={makePayment}
         amount={getFinalPrice() * 100}
         name="Cloths"
