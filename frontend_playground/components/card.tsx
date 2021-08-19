@@ -1,12 +1,21 @@
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
-import { addItemToCart } from "../lib/cart";
+import { addItemToCart, removeItemFromCart } from "../lib/cart";
 import ImageHelper from "./image_helper";
 
-function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
+function Card({
+  product,
+  showAddToCart = true,
+  showRemoveFromCart = false,
+  setReload = (func) => func,
+  // setReload = function(func) {return func}, // old way defining what's defined above
+  reload = undefined,
+}) {
   const [redirect, setRedirect] = useState(false);
   const router = useRouter();
-  const getARedirect = () => (redirect ? router.push("/cart") : null);
+  const getARedirect = () => {
+    redirect ? router.push("/cart") : null;
+  };
 
   const [count, setCount] = useState(product.count);
 
@@ -31,7 +40,10 @@ function Card({ product, showAddToCart = true, showRemoveFromCart = false }) {
     return (
       showRemoveFromCart && (
         <button
-          onClick={() => {}}
+          onClick={() => {
+            removeItemFromCart(product._id);
+            setReload(!reload);
+          }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
         >
           Remove from cart
