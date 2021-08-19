@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import BaseLayout from "../components/base_layout";
 import Card from "../components/card";
+import StripeCheckoutSection from "../components/stripe_checkout";
 import { loadCart } from "../lib/cart";
 
 function Cart() {
@@ -29,9 +30,11 @@ function Cart() {
   );
 
   const loadCheckout = () => (
-    <div>
-      <h2>This sesction is for checkout</h2>
-    </div>
+    <StripeCheckoutSection
+      products={products}
+      setReload={setReload}
+      reload={reload}
+    />
   );
 
   return (
