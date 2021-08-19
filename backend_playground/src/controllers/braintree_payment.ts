@@ -1,11 +1,11 @@
-import { connect, Environment } from "braintree";
+import { BraintreeGateway, Environment } from "braintree";
 import { Request, Response } from "express";
 
-const braintree = connect({
+const braintree = new BraintreeGateway({
   environment: Environment.Sandbox,
-  merchantId: "",
-  publicKey: "",
-  privateKey: "",
+  merchantId: process.env.BRAINTREE_MERCHANT_ID,
+  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
+  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
 });
 
 export async function getToken(req: Request, res: Response) {
