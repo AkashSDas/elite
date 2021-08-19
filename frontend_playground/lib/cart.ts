@@ -16,3 +16,14 @@ export function loadCart() {
     }
   }
 }
+
+export function removeItemFromCart(productId: string) {
+  if (typeof window !== undefined) {
+    if (localStorage.getItem("cart")) {
+      let cart = JSON.parse(localStorage.getItem("cart")) as any[];
+      cart = cart.filter((product) => product._id !== productId);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return cart;
+    }
+  }
+}
