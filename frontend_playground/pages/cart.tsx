@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import BaseLayout from "../components/base_layout";
+import BraintreePayment from "../components/braintree_payment";
 import Card from "../components/card";
 import StripeCheckoutSection from "../components/stripe_checkout";
 import { loadCart } from "../lib/cart";
@@ -30,7 +31,12 @@ function Cart() {
   );
 
   const loadCheckout = () => (
-    <StripeCheckoutSection
+    // <StripeCheckoutSection
+    //   products={products}
+    //   setReload={setReload}
+    //   reload={reload}
+    // />
+    <BraintreePayment
       products={products}
       setReload={setReload}
       reload={reload}
