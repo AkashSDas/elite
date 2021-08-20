@@ -12,11 +12,11 @@ export async function getToken(userId, token) {
 
 export async function makePayment(userId, token, paymentInfo) {
   const [res, err] = await runAsync(
-    fetchFromAPI(`/payment/braintree/${userId}`, {
+    fetchFromAPI(`/payments/braintree/${userId}`, {
       method: "POST",
       token,
-      body: paymentInfo,
+      body: { ...paymentInfo },
     })
   );
-  return [res, err];
+  return [await res.json(), err];
 }
