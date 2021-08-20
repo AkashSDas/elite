@@ -1,7 +1,7 @@
 import DropIn from "braintree-web-drop-in-react";
 import { useEffect, useState } from "react";
 import { isAuthenticated } from "../lib/auth";
-import { getToken } from "../lib/braintree_payment";
+import { getToken, makePayment } from "../lib/braintree_payment";
 
 function BraintreePayment({
   products,
@@ -40,6 +40,40 @@ function BraintreePayment({
     getAToken(userId, token);
   }, []);
 
+  const getTotalAmount = () => {
+    let amount = 0;
+    products.map((product) => (amount = amount + product.price));
+    return amount;
+  };
+
+  const onPurchase = async () => {
+    setInfo({ ...info, loading: true });
+    let nonce;
+
+    try {
+      let data = await info.instance.requestPaymentMethod();
+      nonce = data.nonce;
+      const paymentData = {
+        paymentMethodNonce: nonce,
+        amount: getTotalAmount(),
+      };
+
+      const [res, error] = await makePayment(userId, token, paymentData);
+      console.log(res, error);
+
+      if (error) setInfo({ ...info, loading: false, sucess: false });
+      else {
+        // res !== null
+        console.log(res);
+        setInfo({
+          ...info,
+          success: res.success ? true : false,
+          loading: false,
+        });
+      }
+    } catch (err) {}
+  };
+
   const showDropIn = () => {
     if (info.clientToken !== null && products.length > 0)
       return (
@@ -53,7 +87,7 @@ function BraintreePayment({
           />
           <button
             className="btn btn-success text-white px-5 btn-lg"
-            onClick={() => {}}
+            onClick={onPurchase}
           >
             Pay
           </button>
@@ -63,7 +97,12 @@ function BraintreePayment({
     return <h2>Login</h2>;
   };
 
-  return <section>{showDropIn()}</section>;
+  return (
+    <section>
+      <h2>Total amount - {getTotalAmount()}</h2>
+      {showDropIn()}
+    </section>
+  );
 }
 
 export default BraintreePayment;
