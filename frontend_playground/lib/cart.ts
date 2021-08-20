@@ -31,6 +31,8 @@ export function removeItemFromCart(productId: string) {
 export function cartEmpty(next: Function) {
   if (typeof window !== undefined) {
     localStorage.removeItem("cart");
+    let cart = [];
+    localStorage.setItem("cart", JSON.stringify(cart));
     next();
   }
 }
