@@ -28,7 +28,7 @@ export function getOrderById(
 }
 
 export function createOrder(req: Request, res: Response) {
-  req.body.order.user = req.profile();
+  req.body.order.user = req.profile.user;
   const order = new Order(req.body.order);
   order.save((err, o) => {
     if (err) {
