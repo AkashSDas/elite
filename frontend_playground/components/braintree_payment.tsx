@@ -2,6 +2,8 @@ import DropIn from "braintree-web-drop-in-react";
 import { useEffect, useState } from "react";
 import { isAuthenticated } from "../lib/auth";
 import { getToken, makePayment } from "../lib/braintree_payment";
+import { cartEmpty } from "../lib/cart";
+import { createOrder } from "../lib/order";
 
 function BraintreePayment({
   products,
@@ -59,7 +61,6 @@ function BraintreePayment({
       };
 
       const [res, error] = await makePayment(userId, token, paymentData);
-      console.log(res, error);
 
       if (error) setInfo({ ...info, loading: false, sucess: false });
       else {
@@ -70,6 +71,20 @@ function BraintreePayment({
           success: res.success ? true : false,
           loading: false,
         });
+
+        // create order
+        const orderData = {
+          products,
+          transaction_id: res.transaction.id,
+          amount: res.transaction.amount,
+        };
+        createOrder(userId, token, orderData);
+
+        // empty the cart
+        cartEmpty(() => {});
+
+        // reload
+        setReload(!reload);
       }
     } catch (err) {}
   };
