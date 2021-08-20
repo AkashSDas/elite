@@ -5,6 +5,7 @@ export async function createOrder(userId: string, token: string, order: any) {
     fetchFromAPI(`/order/create/${userId}`, {
       method: "POST",
       body: { order },
+      token,
     })
   );
 
