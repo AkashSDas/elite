@@ -9,7 +9,6 @@ function signup(req: Request, res: Response) {
     return responseMsg(res, {
       status: 422,
       message: errors.array()[0].msg,
-      error: true,
     });
 
   const user = new User(req.body);
@@ -17,7 +16,6 @@ function signup(req: Request, res: Response) {
     if (err) {
       return responseMsg(res, {
         status: 400,
-        error: true,
         message: "Not able to save user in database",
       });
     }
