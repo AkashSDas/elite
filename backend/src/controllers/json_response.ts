@@ -3,7 +3,7 @@ import { validationResult } from "express-validator";
 
 interface ResponseMessage {
   status: number;
-  error: boolean;
+  error?: boolean;
   message: string;
   data?: any;
 }
