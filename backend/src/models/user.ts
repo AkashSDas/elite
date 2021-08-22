@@ -98,4 +98,5 @@ userSchema
     return this._password;
   });
 
-export const User = model<UserDocument>("User", userSchema);
+const User = model<UserDocument>("User", userSchema);
+export default User;
