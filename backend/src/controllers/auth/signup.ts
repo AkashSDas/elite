@@ -1,34 +1,32 @@
 import { Request, Response } from "express";
-import { validationResult } from "express-validator";
-import User from "../../models/user";
-import { responseMsg } from "../json_response";
+import User, { UserDocument } from "../../models/user";
+import { runAsync } from "../../utils";
+import { expressValidatorErrorResponse, responseMsg } from "../json_response";
 
-function signup(req: Request, res: Response) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return responseMsg(res, {
-      status: 422,
-      message: errors.array()[0].msg,
-    });
+async function signup(req: Request, res: Response) {
+  const [errors, jsonRes] = expressValidatorErrorResponse(req, res);
+  if (errors) return jsonRes;
 
   const user = new User(req.body);
-  user.save((err, user) => {
-    if (err) {
-      return responseMsg(res, {
-        status: 400,
-        message: "Not able to save user in database",
-      });
-    }
-  });
+  const [err, data] = await runAsync(user.save());
+  if (err)
+    return responseMsg(res, {
+      status: 400,
+      message: "Not able to save user in database",
+    });
 
+  const savedUser = data as UserDocument;
   return responseMsg(res, {
     status: 200,
     error: false,
     message: "User successfully in the database",
     data: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
+      user: {
+        id: savedUser._id,
+        username: savedUser.username,
+        email: savedUser.email,
+        role: savedUser.role,
+      },
     },
   });
 }
