@@ -8,14 +8,15 @@ async function signup(req: Request, res: Response) {
   if (errors) return jsonRes;
 
   const user = new User(req.body);
-  const [err, data] = await runAsync(user.save());
+  const [data, err] = await runAsync(user.save());
+
   if (err)
     return responseMsg(res, {
       status: 400,
       message: "Not able to save user in database",
     });
 
-  const savedUser = data as UserDocument;
+  const savedUser: UserDocument = data;
   return responseMsg(res, {
     status: 200,
     error: false,

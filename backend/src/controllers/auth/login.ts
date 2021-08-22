@@ -21,7 +21,7 @@ async function login(req: LoginRequest, res: Response) {
   /// Below is mongoose offical doc with example of findOne and exec
   /// promise
   /// https://mongoosejs.com/docs/promises.html
-  let [error, data] = await runAsync(User.findOne({ email }).exec());
+  let [data, error] = await runAsync(User.findOne({ email }).exec());
 
   if (error)
     return responseMsg(res, {
