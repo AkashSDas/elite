@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { router as authRouter } from "./routes/auth";
 
 // App
 export const app = express();
@@ -12,3 +13,6 @@ app.use(express.json()); // for parsing incoming data
 // app.get("/", (req: Request, res: Response) => {
 //   res.send("hello world");
 // });
+
+/// Routes
+app.use("/api/auth", authRouter);
