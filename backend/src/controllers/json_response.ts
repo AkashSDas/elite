@@ -34,7 +34,6 @@ export function expressValidatorErrorResponse(req: any, res: Response) {
       responseMsg(res, {
         status: 422,
         message: errors.array()[0].msg,
-        error: true,
       }),
     ];
   }
