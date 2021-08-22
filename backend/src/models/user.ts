@@ -1,4 +1,4 @@
-import { Document, model, Schema } from "mongoose";
+import { Date, Document, model, Schema } from "mongoose";
 import crypto from "crypto";
 
 type HashPasswordFunction = (password: string) => string;
@@ -20,6 +20,8 @@ export type UserDocument = Document & {
   salt: string;
   hashPassword: HashPasswordFunction;
   authenticate: AuthenticateFunction;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 const userSchema = new Schema<UserDocument>(
