@@ -8,9 +8,11 @@ interface ResponseMessage {
   data?: any;
 }
 
+/// Since most of the response msg will be about error, that's
+/// why by default its true to avoid extra code
 export function responseMsg(
   res: Response,
-  { status, error, message, data }: ResponseMessage,
+  { status, error = true, message, data }: ResponseMessage,
   next: Function = () => {}
 ) {
   res.status(status).json({ error, message, data } as ResponseMessage);
