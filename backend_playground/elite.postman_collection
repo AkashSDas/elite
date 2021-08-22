@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "9c807de2-665e-4402-9e95-071de390536f",
+		"name": "Elite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign In",
+			"item": [
+				{
+					"name": "Wrong user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tim@gmail.com\",\r\n    \"password\": \"testing\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"james@gmail.com\",\r\n    \"password\": \"wrong password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Right user and password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"james@gmail.com\",\r\n    \"password\": \"testing\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sign Up",
+			"item": [
+				{
+					"name": "Successfully create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Ethan Hunt\",\r\n    \"email\": \"ethan@gmail.com\",\r\n    \"userInfo\": \"Second user ever\",\r\n    \"password\": \"testing\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Playground routes (for testing)",
+			"item": [
+				{
+					"name": "isSignedIn middleware",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwMTIzMjl9.MLlwVEJ-WOZIjtcO9Zz3ZrPuPbONo3eeMshFmv2fGtQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/auth/playground",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"playground"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Successful user retrieval",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwMjkxMTJ9.cOAXWcyYVZ9816rpSH-IwjmJ2rG9ZRhZ1O7LnMhVmm4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwMzQ5Nzd9.8hO1grfepE_VA0oVetr5qkkfJGu_wpcByCZcDaA6zSo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"james@gmail.com\",\r\n    \"username\": \"James Bond\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkyNzczMTZ9.4lXEgPZ2e9sqUVa6ZX-k1E2tAAIXYZi9d9nlrNIoiN0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fun\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/category/create/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"create",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwODgyNTF9.Ve2zdfZL-NKq2CpgdAcl6Gcz-joPOplUqo3MuyLIHuw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Blue Suit\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/category/6119e5140ac25027447260ad/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"6119e5140ac25027447260ad",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/category/6119e5140ac25027447260ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"6119e5140ac25027447260ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/category/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong auth user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer pyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwODgyNTF9.Ve2zdfZL-NKq2CpgdAcl6Gcz-joPOplUqo3MuyLIHuw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Beast Pants\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/category/6119e5140ac25027447260ad/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"6119e5140ac25027447260ad",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwODgyNTF9.Ve2zdfZL-NKq2CpgdAcl6Gcz-joPOplUqo3MuyLIHuw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/category/6119e95f78c24753c077343c/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"6119e95f78c24753c077343c",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkxNjgyNDd9.lFoxQ9oLnHLVp8YFvqRy_JZCtEoSp6zg27_w6ZLVu2w ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Fourth cloth",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "The fourth cloth for sell testing",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "611b2584b55ea43e88496b58",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/tmp/user-data/projects/big_projects/elite/unsplash_imgs/tshirts/img-4.jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/product/create/6117c8c686a9263288551464",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"create",
+								"6117c8c686a9263288551464"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Admin Auth Token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwODY3Mzl9.71oEvZiI0dHTGtpWlqqgWymqDTSmsQZnjfYPXViaqY8"
+		},
+		{
+			"key": "Wrong Auth Token",
+			"value": "Bearer pyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTE3YzhjNjg2YTkyNjMyODg1NTE0NjQiLCJpYXQiOjE2MjkwODY3Mzl9.71oEvZiI0dHTGtpWlqqgWymqDTSmsQZnjfYPXViaqY8"
+		}
+	]
+}
