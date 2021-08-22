@@ -21,15 +21,19 @@ async function login(req: LoginRequest, res: Response) {
   /// Below is mongoose offical doc with example of findOne and exec
   /// promise
   /// https://mongoosejs.com/docs/promises.html
+  ///
+  /// When using `exec` there is no error returned, just user returned
+  /// is null indicating user was not found
   let [data, error] = await runAsync(User.findOne({ email }).exec());
 
-  if (error)
+  /// If data i.e. user is null then user doesn't exists
+  if (error || !data)
     return responseMsg(res, {
       status: 400,
       message: "User does not exists",
     });
 
-  const user = data as UserDocument;
+  const user: UserDocument = data;
   if (!user.authenticate(password))
     return responseMsg(res, {
       status: 401,
