@@ -10,7 +10,8 @@
     "target": "es2017",
     "lib": ["ESNext"],
     "strictNullChecks": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": ["@types"]
   },
   "compileOnSave": true,
   "include": ["src"]
