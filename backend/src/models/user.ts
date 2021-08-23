@@ -1,5 +1,6 @@
 import { Date, Document, model, Schema } from "mongoose";
 import crypto from "crypto";
+import MongoPaging from "mongo-cursor-pagination";
 
 type HashPasswordFunction = (password: string) => string;
 type AuthenticateFunction = (password: string) => boolean;
@@ -99,6 +100,15 @@ userSchema
   .get(function (this: UserDocument) {
     return this._password;
   });
+
+/// Implement pagination using either skip (or offset based) or cursor (recommended for scalability) based
+/// To know how using mongoose, read the post below
+/// https://cloudnweb.dev/2021/04/pagination-nodejs-mongoose/
+///
+/// But instead of creating this feature, mongo-cursor-pagination package is used
+/// https://www.npmjs.com/package/mongo-cursor-pagination
+/// The plugin will add paginate function
+userSchema.plugin(MongoPaging.mongoosePlugin, { name: "pagniateUser" });
 
 const User = model<UserDocument>("User", userSchema);
 export default User;
