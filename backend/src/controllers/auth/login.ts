@@ -53,6 +53,7 @@ async function login(req: LoginRequest, res: Response) {
     error: false,
     message: "Successfully logged in",
     data: {
+      token,
       user: {
         _id: user._id,
         username: user.username,
