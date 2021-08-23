@@ -13,14 +13,8 @@ export const isSignedIn = jwt({
 /// Custom middlewares ///
 
 /// Authenticating logged in and request sending user
-
-interface IIsAuthenticatedRequest extends Request {
-  profile: any;
-  auth: any;
-}
-
 export function isAuthenticated(
-  req: IIsAuthenticatedRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ) {
@@ -42,16 +36,7 @@ export function isAuthenticated(
 }
 
 /// Check Admin
-
-interface IIsAdminRequest extends Request {
-  profile: any;
-}
-
-export function isAdmin(
-  req: IIsAdminRequest,
-  res: Response,
-  next: NextFunction
-) {
+export function isAdmin(req: Request, res: Response, next: NextFunction) {
   /// Regular user
   if (req.profile.role === 0)
     return responseMsg(res, {
