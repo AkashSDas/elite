@@ -5,20 +5,22 @@ import { responseMsg } from "../json_response";
 
 async function getAllUsers(req: Request, res: Response) {
   /// Only admin will be able to get all users
-  if (req.profile.role !== 99)
-    return responseMsg(res, {
-      status: 401,
-      message: "You are not authorized to make this request",
-    });
+  // if (req.profile.role !== 99)
+  //   return responseMsg(res, {
+  //     status: 401,
+  //     message: "You are not authorized to make this request",
+  //   });
 
   /// if their is next id then use it to get data from that document
   /// if it is undefined then paginateUser will give documents from start
   const next = req.query.next;
 
-  const LIMIT = 2;
+  const LIMIT = 1;
+  const limit = req.query.limit ? parseInt(req.query.limit as string) : LIMIT;
+
   const [data, err] = await runAsync(
     await (User as any).pagniateUser({
-      limit: LIMIT,
+      limit,
       paginatedField: "updatedAt",
       next,
     })
