@@ -17,7 +17,7 @@ const productSchema = new Schema<ProductDocument>({
   price: { type: Number, required: true },
   stock: { type: Number, required: true },
   sold: { type: Number, default: 0 },
-  photo: { data: Buffer, contentType: String, required: true },
+  photoURL: { type: String },
   category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
 });
 
