@@ -94,12 +94,13 @@ function createProduct(req: Request, res: Response) {
         message: "Successfully saved product",
         data: {
           product: {
+            _id: savedProduct._id,
             name: savedProduct.name,
             description: savedProduct.description,
             price: savedProduct.price,
             stock: savedProduct.stock,
             sold: savedProduct.sold,
-            photoURL: savedProduct.photo,
+            photoURL: savedProduct.photoURL,
             category: savedProduct.category,
           },
         },
