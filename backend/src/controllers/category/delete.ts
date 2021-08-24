@@ -4,7 +4,7 @@ import { responseMsg } from "../json_response";
 
 async function deleteCategory(req: Request, res: Response) {
   const category = req.category;
-  const [data, err] = await runAsync(category.remove().exec());
+  const [data, err] = await runAsync(category.deleteOne({ _id: category._id }));
   if (err)
     return responseMsg(res, {
       status: 400,
