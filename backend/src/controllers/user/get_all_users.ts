@@ -19,7 +19,7 @@ async function getAllUsers(req: Request, res: Response) {
   const limit = req.query.limit ? parseInt(req.query.limit as string) : LIMIT;
 
   const [data, err] = await runAsync(
-    await (User as any).pagniateUser({
+    await (User as any).paginateUser({
       limit,
       paginatedField: "updatedAt",
       next,

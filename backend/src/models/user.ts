@@ -108,7 +108,7 @@ userSchema
 /// But instead of creating this feature, mongo-cursor-pagination package is used
 /// https://www.npmjs.com/package/mongo-cursor-pagination
 /// The plugin will add paginate function
-userSchema.plugin(MongoPaging.mongoosePlugin, { name: "pagniateUser" });
+userSchema.plugin(MongoPaging.mongoosePlugin, { name: "paginateUser" });
 
 const User = model<UserDocument>("User", userSchema);
 export default User;

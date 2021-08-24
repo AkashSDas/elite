@@ -19,7 +19,7 @@ async function getAllCategories(req: Request, res: Response) {
   const limit = req.query.limit ? parseInt(req.query.limit as string) : LIMIT;
 
   const [data, err] = await runAsync(
-    await (Category as any).pagniateUser({
+    await (Category as any).paginateCategory({
       limit,
       paginatedField: "updatedAt",
       next,
