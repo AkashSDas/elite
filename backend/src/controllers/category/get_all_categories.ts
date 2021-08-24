@@ -26,6 +26,12 @@ async function getAllCategories(req: Request, res: Response) {
     })
   );
 
+  if (err)
+    return responseMsg(res, {
+      status: 400,
+      message: "Failed to retrive categories",
+    });
+
   /// since traditional for loop is more performant then forEach and
   /// here we can have lots of data to loop, so tranditional for loop
   /// is used
@@ -40,16 +46,10 @@ async function getAllCategories(req: Request, res: Response) {
     });
   }
 
-  if (err)
-    return responseMsg(res, {
-      status: 400,
-      message: "Failed to retrive categories",
-    });
-
   return responseMsg(res, {
     status: 200,
     error: false,
-    message: `Retrived ${LIMIT} categories successfully`,
+    message: `Retrived ${categories.length} categories successfully`,
     data: {
       categories,
       previous: data.previous,
