@@ -23,5 +23,5 @@ router.delete(
   isAuthenticated,
   deleteCategory
 );
-router.get("/:categoryId", isSignedIn, isAuthenticated, getCategory);
-router.get("/", isSignedIn, isAuthenticated, getAllCategories);
+router.get("/:categoryId/:userId", isSignedIn, isAuthenticated, getCategory);
+router.get("/:userId", isSignedIn, isAuthenticated, getAllCategories);
