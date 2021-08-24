@@ -15,5 +15,6 @@ declare namespace Express {
   interface Request {
     profile: any;
     auth: any;
+    category: any;
   }
 }
