@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { isAuthenticated, isSignedIn } from "../controllers/auth/middlewares";
+import getAllUniqueCategories from "../controllers/category/get_all_unqiue_categories";
 import createProduct from "../controllers/product/create";
 import deleteProduct from "../controllers/product/delete";
 import getAllProducts from "../controllers/product/get_all_products";
@@ -23,3 +24,10 @@ router.delete(
   deleteProduct
 );
 router.get("/:userId", isSignedIn, isAuthenticated, getAllProducts);
+
+router.get(
+  "/categories/:userId",
+  isSignedIn,
+  isAuthenticated,
+  getAllUniqueCategories
+);
