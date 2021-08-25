@@ -17,5 +17,6 @@ declare namespace Express {
     auth: any;
     category: any;
     product: any;
+    order: any;
   }
 }
