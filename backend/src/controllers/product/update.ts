@@ -86,7 +86,7 @@ function updateProduct(req: Request, res: Response) {
           "?alt=media&token=" +
           uuid;
 
-        product.photo = photoURL;
+        product.photoURL = photoURL;
       }
 
       const [updatedProduct, e] = await runAsync(product.save());

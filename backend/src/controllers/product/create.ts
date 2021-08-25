@@ -79,7 +79,7 @@ function createProduct(req: Request, res: Response) {
         "?alt=media&token=" +
         uuid;
 
-      product.photo = photoURL;
+      product.photoURL = photoURL;
 
       const [savedProduct, e] = await runAsync(product.save());
       if (e)
