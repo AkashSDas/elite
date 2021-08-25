@@ -22,4 +22,4 @@ router.delete(
   isAuthenticated,
   deleteProduct
 );
-router.get("/", isSignedIn, isAuthenticated, getAllProducts);
+router.get("/:userId", isSignedIn, isAuthenticated, getAllProducts);
