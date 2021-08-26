@@ -1,6 +1,7 @@
 import { Document, model, Schema } from "mongoose";
 import { ProductCartDocument, productCartSchema } from "./product_cart";
 import { UserDocument } from "./user";
+import MongoPaging from "mongo-cursor-pagination";
 
 /// Product Cart model
 
@@ -38,5 +39,7 @@ const orderSchema = new Schema<OrderDocument>(
   },
   { timestamps: true }
 );
+
+orderSchema.plugin(MongoPaging.mongoosePlugin, { name: "paginateOrder" });
 
 export const Order = model<OrderDocument>("Order", orderSchema);
