@@ -5,6 +5,7 @@ import { router as userRouter } from "./routes/user";
 import { router as categoryRouter } from "./routes/category";
 import { router as productRouter } from "./routes/product";
 import { router as orderRouter } from "./routes/order";
+import { router as paymentRouter } from "./routes/payment";
 
 // App
 export const app = express();
@@ -24,3 +25,4 @@ app.use("/api/user", userRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/product", productRouter);
 app.use("/api/order", orderRouter);
+app.use("/api/payment", paymentRouter);
