@@ -9,6 +9,9 @@ const materialUITheme = createTheme({
       secondary: "#242424", /// ligher black
     },
   },
+  typography: {
+    fontFamily: "Source Sans Pro, sans-serif",
+  },
 });
 
 export default materialUITheme;
