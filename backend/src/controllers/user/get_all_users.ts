@@ -5,11 +5,11 @@ import { responseMsg } from "../json_response";
 
 async function getAllUsers(req: Request, res: Response) {
   /// Only admin will be able to get all users
-  if (req.profile.role !== 99)
-    return responseMsg(res, {
-      status: 401,
-      message: "You are not authorized to make this request",
-    });
+  // if (req.profile.role !== 99)
+  //   return responseMsg(res, {
+  //     status: 401,
+  //     message: "You are not authorized to make this request",
+  //   });
 
   /// if their is next id then use it to get data from that document
   /// if it is undefined then paginateUser will give documents from start
@@ -39,6 +39,7 @@ async function getAllUsers(req: Request, res: Response) {
       email: user.email,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
+      stripeCustomerId: user.stripeCustomerId,
     });
   }
 
@@ -51,7 +52,7 @@ async function getAllUsers(req: Request, res: Response) {
   return responseMsg(res, {
     status: 200,
     error: false,
-    message: `Retrived ${LIMIT} users successfully`,
+    message: `Retrived ${users.length} users successfully`,
     data: {
       users,
       previous: data.previous,
