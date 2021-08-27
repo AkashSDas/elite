@@ -23,6 +23,7 @@ export type UserDocument = Document & {
   authenticate: AuthenticateFunction;
   createdAt: Date;
   updatedAt: Date;
+  stripeCustomerId: string;
 };
 
 const userSchema = new Schema<UserDocument>(
@@ -41,6 +42,9 @@ const userSchema = new Schema<UserDocument>(
 
     /// by default user won't have anything purchased
     purchases: { type: Array, default: [] },
+
+    /// Stripe customer id which link this customer to stripe
+    stripeCustomerId: { type: String },
   },
   { timestamps: true }
 );
