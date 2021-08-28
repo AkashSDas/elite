@@ -6,6 +6,7 @@ import materialUITheme from "../../lib/theme";
 interface Props {
   text: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
+  width?: string;
 }
 
 const useStyle = makeStyles({
@@ -18,13 +19,13 @@ const useStyle = makeStyles({
     "&:hover": {
       backgroundColor: blue[300],
     },
-    width: "100%",
+    width: (props: { width: string }) => props.width,
     fontFamily: materialUITheme.typography.fontFamily,
   },
 });
 
-function SimpleBtn({ text, onClick }: Props) {
-  const classes = useStyle();
+function SimpleBtn({ text, onClick, width = null }: Props) {
+  const classes = useStyle({ width });
 
   return (
     <Button onClick={onClick} className={classes.root}>
