@@ -1,6 +1,7 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import { useState } from "react";
 import materialUITheme from "../../lib/theme";
+import BigAppBar from "./big_appbar";
 import MobileAppBar from "./mobile_appbar";
 
 const useStyle = makeStyles((theme: Theme) =>
@@ -23,17 +24,29 @@ const useStyle = makeStyles((theme: Theme) =>
         paddingLeft: "0px",
         paddingRight: "0px",
       },
-      listItemTypography: {
-        marginRight: "2rem",
-        color: materialUITheme.palette.text.secondary,
-        "&:hover": {
-          cursor: "pointer",
-        },
+    },
+
+    listItemTypography: {
+      marginRight: "2rem",
+      color: materialUITheme.palette.text.secondary,
+      "&:hover": {
+        cursor: "pointer",
       },
     },
 
     actionMenu: {
       width: "200px !important",
+    },
+
+    mobileAppBar: {
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
+    },
+    bigAppBar: {
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
     },
   })
 );
@@ -47,7 +60,19 @@ function Navbar() {
   const toggleDrawer = () => setOpen((value) => !value);
 
   return (
-    <MobileAppBar classes={classes} open={open} toggleDrawer={toggleDrawer} />
+    <div>
+      <div className={classes.mobileAppBar}>
+        <MobileAppBar
+          classes={classes}
+          open={open}
+          toggleDrawer={toggleDrawer}
+        />
+      </div>
+
+      <div className={classes.bigAppBar}>
+        <BigAppBar classes={classes} />
+      </div>
+    </div>
   );
 }
 
