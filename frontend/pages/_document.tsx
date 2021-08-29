@@ -14,9 +14,13 @@ export default class MyDocument extends Document {
             content={materialUITheme.palette.primary.main}
           />
           <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap"
-          />
+          ></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />

@@ -10,8 +10,14 @@ const materialUITheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Source Code Pro, monospace",
+    fontFamily: "Inter, sans-serif",
+    h1: {
+      fontFamily: "Playfair Display, serif",
+    },
   },
 });
+
+materialUITheme.typography.h1.color = materialUITheme.palette.text.primary;
+materialUITheme.typography.body1.color = materialUITheme.palette.text.secondary;
 
 export default materialUITheme;
