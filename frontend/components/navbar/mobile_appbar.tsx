@@ -14,8 +14,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SimpleBtn from "../btn/simple_btn";
 import { PersonAdd } from "@material-ui/icons";
+import { useRouter } from "next/dist/client/router";
 
 function MobileAppBar({ classes, open, toggleDrawer }) {
+  const router = useRouter();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   /// Work with Menu ///
@@ -57,7 +60,11 @@ function MobileAppBar({ classes, open, toggleDrawer }) {
             </MenuItem>
             <Divider style={{ marginBottom: "0.5em" }} />
             <MenuItem>
-              <SimpleBtn width="100%" text="Sign up" onClick={() => {}} />
+              <SimpleBtn
+                width="100%"
+                text="Sign up"
+                onClick={() => router.push("/auth/signup")}
+              />
             </MenuItem>
           </Menu>
         </div>

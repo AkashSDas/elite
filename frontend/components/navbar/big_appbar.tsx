@@ -1,7 +1,10 @@
 import { AppBar, Toolbar, Typography, Container } from "@material-ui/core";
+import { useRouter } from "next/dist/client/router";
 import SimpleBtn from "../btn/simple_btn";
 
 function BigAppBar({ classes }) {
+  const router = useRouter();
+
   return (
     <AppBar className={classes.root} elevation={1}>
       <Toolbar className={classes.toolbar}>
@@ -12,7 +15,10 @@ function BigAppBar({ classes }) {
           <Typography className={classes.listItemTypography}>Admin</Typography>
           <Typography className={classes.listItemTypography}>Cart</Typography>
           <Typography className={classes.listItemTypography}>Login</Typography>
-          <SimpleBtn text="Sign up" onClick={() => {}} />
+          <SimpleBtn
+            text="Sign up"
+            onClick={() => router.push("/auth/signup")}
+          />
         </Container>
       </Toolbar>
     </AppBar>
