@@ -10,7 +10,7 @@ const materialUITheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Source Sans Pro, sans-serif",
+    fontFamily: "Source Code Pro, monospace",
   },
 });
 
