@@ -6,7 +6,7 @@ const materialUITheme = createTheme({
     secondary: { main: "#309bff" }, /// blue
     text: {
       primary: "#141414", /// darker black
-      secondary: "#242424", /// ligher black
+      secondary: "#575757", /// ligher black
     },
   },
   typography: {

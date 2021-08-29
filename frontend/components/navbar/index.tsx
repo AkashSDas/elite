@@ -13,7 +13,12 @@ const useStyle = makeStyles((theme: Theme) =>
     },
     logo: {
       fontWeight: "bold",
-      fontSize: "1.5rem",
+      fontSize: "30px",
+      fontFamily: materialUITheme.typography.h1.fontFamily,
+      color: materialUITheme.typography.h1.color,
+      "&:hover": {
+        cursor: "pointer",
+      },
     },
     container: {
       display: "flex",
@@ -29,8 +34,10 @@ const useStyle = makeStyles((theme: Theme) =>
     listItemTypography: {
       marginRight: "2rem",
       color: materialUITheme.palette.text.secondary,
+      fontWeight: 600,
       "&:hover": {
         cursor: "pointer",
+        color: materialUITheme.palette.text.primary,
       },
     },
 
