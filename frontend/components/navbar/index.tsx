@@ -50,7 +50,10 @@ const useStyle = makeStyles((theme: Theme) =>
       },
       fontFamily: materialUITheme.typography.h1.fontFamily,
     },
-    actionMenu: { width: "200px !important" },
+    actionMenu: {
+      width: "200px !important",
+      fontFamily: materialUITheme.typography.h1.fontFamily,
+    },
     mobileAppBar: {
       [theme.breakpoints.up("sm")]: {
         display: "none",
