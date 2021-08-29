@@ -13,7 +13,8 @@ const useStyle = makeStyles({
   root: {
     padding: "0.5rem 2rem",
     color: "white",
-    fontWeight: "bold",
+    fontWeight: 500,
+    letterSpacing: "0.075em",
     textTransform: "capitalize",
     backgroundColor: materialUITheme.palette.secondary.main,
     "&:hover": {
