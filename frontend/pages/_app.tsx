@@ -13,6 +13,10 @@ const useStyle = makeStyles((props: Theme) => ({
       paddingRight: "0px",
     },
   },
+
+  /// using this mixins to give height to div above component
+  /// so that it will give space between navbar and main content
+  toolbar: props.mixins.toolbar,
 }));
 
 function MyApp({ Component, pageProps }) {
@@ -22,7 +26,10 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={materialUITheme}>
       <Container className={classes.root}>
         <Navbar />
-        <Component {...pageProps} />
+        <Container>
+          <div className={classes.toolbar}></div>
+          <Component {...pageProps} />
+        </Container>
       </Container>
     </ThemeProvider>
   );
