@@ -6,11 +6,8 @@ import MobileAppBar from "./mobile_appbar";
 
 const useStyle = makeStyles((theme: Theme) =>
   createStyles({
-    root: { margin: "0" },
-    toolbar: {
-      display: "flex",
-      justifyContent: "space-between",
-    },
+    root: { margin: "0", paddingLeft: "32px", paddingRight: "32px" },
+    toolbar: { display: "flex", justifyContent: "space-between" },
     logo: {
       fontWeight: "bold",
       fontSize: "30px",
@@ -30,21 +27,17 @@ const useStyle = makeStyles((theme: Theme) =>
         paddingRight: "0px",
       },
     },
-
     listItemTypography: {
       marginRight: "2rem",
       color: materialUITheme.palette.text.secondary,
-      fontWeight: 600,
+      fontWeight: 700,
       "&:hover": {
         cursor: "pointer",
         color: materialUITheme.palette.text.primary,
       },
+      fontFamily: materialUITheme.typography.h1.fontFamily,
     },
-
-    actionMenu: {
-      width: "200px !important",
-    },
-
+    actionMenu: { width: "200px !important" },
     mobileAppBar: {
       [theme.breakpoints.up("sm")]: {
         display: "none",
