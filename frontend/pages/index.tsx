@@ -19,7 +19,7 @@ function Index() {
 
   return (
     <Container className={classes.root}>
-      <Navbar />
+      <main></main>
     </Container>
   );
 }
