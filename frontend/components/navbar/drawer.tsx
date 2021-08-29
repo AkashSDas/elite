@@ -22,7 +22,7 @@ interface Props {
 const useStyle = makeStyles({
   drawer: { width: "250px" },
   listItemText: {
-    fontFamily: materialUITheme.typography.fontFamily,
+    fontFamily: materialUITheme.typography.h1.fontFamily,
     fontWeight: "bold",
   },
 });
@@ -67,7 +67,7 @@ function SideDrawer({ open, toggleDrawer }: Props) {
           <Link href={item.route}>
             <ListItem button key={key}>
               <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText className={classes.listItemText}>
+              <ListItemText classes={{ primary: classes.listItemText }}>
                 {item.text}
               </ListItemText>
             </ListItem>
@@ -83,7 +83,7 @@ function SideDrawer({ open, toggleDrawer }: Props) {
             return (
               <Link href={item.route}>
                 <ListItem button key={key}>
-                  <SimpleBtn text={item.text} onClick={() => {}} />
+                  <SimpleBtn width="100%" text={item.text} onClick={() => {}} />
                 </ListItem>
               </Link>
             );
@@ -92,7 +92,7 @@ function SideDrawer({ open, toggleDrawer }: Props) {
             <Link href={item.route}>
               <ListItem button key={key}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText className={classes.listItemText}>
+                <ListItemText classes={{ primary: classes.listItemText }}>
                   {item.text}
                 </ListItemText>
               </ListItem>
