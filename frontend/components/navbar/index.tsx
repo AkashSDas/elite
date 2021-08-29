@@ -6,7 +6,20 @@ import MobileAppBar from "./mobile_appbar";
 
 const useStyle = makeStyles((theme: Theme) =>
   createStyles({
-    root: { margin: "0", paddingLeft: "32px", paddingRight: "32px" },
+    root: {
+      margin: "0",
+      paddingLeft: "32px",
+      paddingRight: "32px",
+
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: "8px",
+        paddingRight: "8px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft: "0px",
+        paddingRight: "0px",
+      },
+    },
     toolbar: { display: "flex", justifyContent: "space-between" },
     logo: {
       fontWeight: "bold",
