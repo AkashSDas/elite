@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
             content={materialUITheme.palette.primary.main}
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
             rel="stylesheet"
           ></link>
           <link

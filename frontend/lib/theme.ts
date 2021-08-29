@@ -10,7 +10,7 @@ const materialUITheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily: "Rubik, sans-serif",
     h1: {
       fontFamily: "Playfair Display, serif",
     },
