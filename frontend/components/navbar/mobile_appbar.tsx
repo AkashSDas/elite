@@ -6,12 +6,14 @@ import {
   IconButton,
   Typography,
   Divider,
+  Badge,
 } from "@material-ui/core";
 import { useState } from "react";
 import SideDrawer from "./drawer";
 import MenuIcon from "@material-ui/icons/Menu";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SimpleBtn from "../btn/simple_btn";
+import { PersonAdd } from "@material-ui/icons";
 
 function MobileAppBar({ classes, open, toggleDrawer }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -47,12 +49,15 @@ function MobileAppBar({ classes, open, toggleDrawer }) {
           >
             {/* Adding width to single element will increase the width
               of entire menu */}
-            <MenuItem className={classes.actionMenu}>Login</MenuItem>
-            <MenuItem>
-              <Divider />
+            <MenuItem className={classes.actionMenu}>
+              <Badge style={{ marginRight: "0.5em" }}>
+                <PersonAdd />
+              </Badge>
+              Login
             </MenuItem>
+            <Divider style={{ marginBottom: "0.5em" }} />
             <MenuItem>
-              <SimpleBtn text="Sign up" onClick={() => {}} />
+              <SimpleBtn width="100%" text="Sign up" onClick={() => {}} />
             </MenuItem>
           </Menu>
         </div>
