@@ -28,6 +28,9 @@ const useStyle = makeStyles((theme) => ({
     "& .MuiFilledInput-underline:after": {
       borderBottomColor: materialUITheme.palette.secondary.main,
     },
+    "& .MuiFilledInput-underline": {
+      backgroundColor: "#ededed",
+    },
   },
   divider: { margin: "1rem auto" },
   form: {
