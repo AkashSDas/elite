@@ -7,6 +7,7 @@ interface Props {
   text: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
   width?: string;
+  disabled?: boolean;
 }
 
 const useStyle = makeStyles({
@@ -25,11 +26,11 @@ const useStyle = makeStyles({
   },
 });
 
-function SimpleBtn({ text, onClick, width = null }: Props) {
+function SimpleBtn({ text, onClick, width = null, disabled }: Props) {
   const classes = useStyle({ width });
 
   return (
-    <Button onClick={onClick} className={classes.root}>
+    <Button onClick={onClick} className={classes.root} disabled={disabled}>
       {text}
     </Button>
   );
