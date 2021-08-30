@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import Navbar from "../components/navbar";
 import materialUITheme from "../lib/theme";
+import { Toaster } from "react-hot-toast";
 import "../styles/globals.css";
 
 const useStyle = makeStyles((props: Theme) => ({
@@ -62,6 +63,7 @@ function MyApp({ Component, pageProps }) {
           <div className={classes.toolbar}></div>
           <Toolbar>
             <Component {...pageProps} />
+            <Toaster />
           </Toolbar>
         </Container>
       </Container>
