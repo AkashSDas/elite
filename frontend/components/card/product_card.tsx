@@ -7,8 +7,10 @@ import {
   makeStyles,
   Theme,
 } from "@material-ui/core";
+import { addItemToCart, removeItemFromCart } from "../../lib/cart";
 import materialUITheme from "../../lib/theme";
 import SimpleBtn from "../btn/simple_btn";
+import toast from "react-hot-toast";
 
 const useProductCardStyle = makeStyles((theme: Theme) => ({
   root: { width: "100%" },
@@ -26,7 +28,12 @@ const useProductCardStyle = makeStyles((theme: Theme) => ({
   info: { marginBottom: theme.spacing(1) },
 }));
 
-function ProductGridItem({ product, key }) {
+function ProductGridItem({
+  product,
+  key,
+  showAddToCart = true,
+  setProducts = (f) => f,
+}) {
   const classes = useProductCardStyle();
 
   return (
@@ -48,7 +55,27 @@ function ProductGridItem({ product, key }) {
             Price Rs.{product.price} | Stocks left {product.stock}
           </Typography>
 
-          <SimpleBtn onClick={() => {}} text="Add to cart" width="100%" />
+          {showAddToCart ? (
+            <SimpleBtn
+              onClick={() => {
+                addItemToCart(product, () => {
+                  toast.success("Added to cart");
+                });
+              }}
+              text="Add to cart"
+              width="100%"
+            />
+          ) : (
+            <SimpleBtn
+              onClick={() => {
+                const cart = removeItemFromCart(product._id);
+                toast.success("Removed from cart");
+                setProducts(cart);
+              }}
+              text="Remove from cart"
+              width="100%"
+            />
+          )}
         </CardContent>
       </Card>
     </Grid>

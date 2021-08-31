@@ -23,7 +23,11 @@ function Cart() {
       {products.length === 0 ? (
         <Typography variant="h1">No products in your cart</Typography>
       ) : (
-        <ProductGrid products={products} />
+        <ProductGrid
+          showAddToCart={false}
+          products={products}
+          setProducts={setProducts}
+        />
       )}
     </main>
   );
