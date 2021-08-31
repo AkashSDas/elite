@@ -23,7 +23,7 @@ router.delete(
   isAuthenticated,
   deleteProduct
 );
-router.get("/:userId", isSignedIn, isAuthenticated, getAllProducts);
+router.get("/", getAllProducts);
 
 router.get(
   "/categories/:userId",
