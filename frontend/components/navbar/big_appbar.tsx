@@ -1,9 +1,22 @@
 import { AppBar, Toolbar, Typography, Container } from "@material-ui/core";
 import { useRouter } from "next/dist/client/router";
+import { NavItemData } from "../../lib/utils";
 import SimpleBtn from "../btn/simple_btn";
+import PersonIcon from "@material-ui/icons/Person";
+import LaptopWindowsIcon from "@material-ui/icons/LaptopWindows";
+import { PersonAdd, ShoppingCart } from "@material-ui/icons";
+import Link from "next/link";
 
 function BigAppBar({ classes }) {
   const router = useRouter();
+
+  /// Nav items
+  const navitems = [
+    new NavItemData("User", "/user", <PersonIcon />),
+    new NavItemData("Admin", "/admin", <LaptopWindowsIcon />),
+    new NavItemData("Cart", "/cart", <ShoppingCart />),
+    new NavItemData("Login", "/auth/login", <PersonAdd />),
+  ];
 
   return (
     <AppBar className={classes.root} elevation={1}>
@@ -11,10 +24,13 @@ function BigAppBar({ classes }) {
         <Typography className={classes.logo}>elite</Typography>
 
         <Container className={classes.container}>
-          <Typography className={classes.listItemTypography}>User</Typography>
-          <Typography className={classes.listItemTypography}>Admin</Typography>
-          <Typography className={classes.listItemTypography}>Cart</Typography>
-          <Typography className={classes.listItemTypography}>Login</Typography>
+          {navitems.map((item: NavItemData, key: number) => (
+            <Link href={item.route}>
+              <Typography className={classes.listItemTypography}>
+                {item.text}
+              </Typography>
+            </Link>
+          ))}
           <SimpleBtn
             text="Sign up"
             onClick={() => router.push("/auth/signup")}
