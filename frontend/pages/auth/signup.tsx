@@ -15,8 +15,9 @@ import toast from "react-hot-toast";
 import { runAsync } from "../../lib/utils";
 import { useRouter } from "next/dist/client/router";
 import { fetchFromAPI } from "../../lib/api/base";
+import { useState } from "react";
 
-const useStyle = makeStyles((theme) => ({
+export const useFormStyle = makeStyles((theme) => ({
   root: {
     borderRadius: "4px",
     padding: "1rem",
@@ -58,8 +59,9 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function SignUp() {
-  const classes = useStyle();
+  const classes = useFormStyle();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     username: "",
@@ -68,18 +70,21 @@ function SignUp() {
   };
 
   const handleSubmit = async (values: SignUpData, resetForm: Function) => {
+    setLoading(true);
     const [res, err] = await signup(values);
+    setLoading(false);
 
-    if (err) toast.error("Failed to create account, Please try again");
-    else {
-      const data = res.data;
-      if (data.error) toast.error("Failed to create account, Please try again");
+    if (err) {
+      const msg = err.response.data.message;
+      if (msg) toast.error(msg);
+      else toast.error("Something went wrong, Please try again");
+    } else {
+      if (res.data.error) toast.error("Something went wrong, Please try again");
       else {
         toast.success(
-          // `@${data.data.user.username} your account is successfully created`
-          "Account sccuessfully created"
+          `${res.data.data.user.username} account created, now login`
         );
-        router.push("/");
+        router.push("/auth/login");
       }
     }
 
@@ -95,7 +100,7 @@ function SignUp() {
       <Divider className={classes.divider} />
 
       <Formik initialValues={initialValues} onSubmit={() => {}}>
-        {({ values, handleChange, resetForm, isSubmitting }) => (
+        {({ values, handleChange, resetForm }) => (
           <form className={classes.form}>
             <TextField
               id="standard-basic"
@@ -127,7 +132,7 @@ function SignUp() {
             <SimpleBtn
               width="100%"
               text="Submit"
-              disabled={isSubmitting}
+              disabled={loading}
               onClick={() => handleSubmit(values, resetForm)}
             />
           </form>
