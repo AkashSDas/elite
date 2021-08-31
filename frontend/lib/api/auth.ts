@@ -42,3 +42,12 @@ export function isAuthenticated() {
     return JSON.parse(localStorage.getItem("jwt"));
   return false;
 }
+
+/// Logout ///
+export async function logout(next: Function) {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("jwt");
+    const [res, err] = await fetchFromAPI("/auth/logout", { method: "GET" });
+    if (!err || !res.error) next();
+  }
+}
