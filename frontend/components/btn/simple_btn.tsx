@@ -18,7 +18,8 @@ const useStyle = makeStyles({
     letterSpacing: "0.075em",
     textTransform: "capitalize",
     backgroundColor: materialUITheme.palette.secondary.main,
-    "&:hover": {
+    "&:hover, &:disabled": {
+      color: "white",
       backgroundColor: blue[300],
     },
     width: (props: { width: string }) => props.width,
