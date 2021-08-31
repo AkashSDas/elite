@@ -13,6 +13,7 @@ import { PersonAdd, ShoppingCart } from "@material-ui/icons";
 import SimpleBtn from "../btn/simple_btn";
 import Link from "next/link";
 import materialUITheme from "../../lib/theme";
+import { NavItemData } from "../../lib/utils";
 
 interface Props {
   open: boolean;
@@ -26,21 +27,6 @@ const useStyle = makeStyles({
     fontWeight: "bold",
   },
 });
-
-/// To capsulate nav item data
-class NavItemData {
-  text: string;
-  icon: any;
-  route: string;
-  isBtn: boolean;
-
-  constructor(text: string, route: string, icon?: any, isBtn = false) {
-    this.text = text;
-    this.route = route;
-    this.icon = icon;
-    this.isBtn = isBtn;
-  }
-}
 
 function SideDrawer({ open, toggleDrawer }: Props) {
   const classes = useStyle();
