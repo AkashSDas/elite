@@ -15,6 +15,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SimpleBtn from "../btn/simple_btn";
 import { PersonAdd } from "@material-ui/icons";
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 
 function MobileAppBar({ classes, open, toggleDrawer }) {
   const router = useRouter();
@@ -37,7 +38,9 @@ function MobileAppBar({ classes, open, toggleDrawer }) {
           <MenuIcon />
         </IconButton>
 
-        <Typography className={classes.logo}>elite</Typography>
+        <Link href="/">
+          <Typography className={classes.logo}>elite</Typography>
+        </Link>
 
         <div>
           <IconButton onClick={handleClick}>

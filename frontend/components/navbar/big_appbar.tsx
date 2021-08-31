@@ -56,7 +56,9 @@ function BigAppBar({ classes }) {
   return (
     <AppBar className={classes.root} elevation={1}>
       <Toolbar className={classes.toolbar}>
-        <Typography className={classes.logo}>elite</Typography>
+        <Link href="/">
+          <Typography className={classes.logo}>elite</Typography>
+        </Link>
 
         <Container className={classes.container}>
           {navitems.map((item: NavItemData, key: number) =>
