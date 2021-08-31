@@ -76,7 +76,8 @@ function SignUp() {
       if (data.error) toast.error("Failed to create account, Please try again");
       else {
         toast.success(
-          `@${data.data.user.username} your account is successfully created`
+          // `@${data.data.user.username} your account is successfully created`
+          "Account sccuessfully created"
         );
         router.push("/");
       }
