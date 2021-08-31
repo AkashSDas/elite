@@ -1,8 +1,8 @@
-import { Grid, makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { fetchFromAPI } from "../lib/api/base";
-import Skeleton from "@material-ui/lab/Skeleton";
-import ProductGridItem from "../components/card/product_card";
+import CardLoader from "../components/card/card_loader";
+import ProductGrid from "../components/card/product_grid";
 
 const useStyle = makeStyles((theme: Theme) => ({
   main: {
@@ -29,32 +29,9 @@ function Index() {
     getProducts();
   }, []);
 
-  const loadingJsx = () => (
-    <Grid container justifyContent="center" spacing={2}>
-      {[0, 1, 2, 3, 4, 5, 6, 7].map((value) => (
-        <Grid key={value} item xs={12} sm={6} md={4} lg={3} xl={2}>
-          <Skeleton
-            animation="wave"
-            variant="rect"
-            height="200px"
-            width="100%"
-          />
-        </Grid>
-      ))}
-    </Grid>
-  );
-
-  const productsJsx = () => (
-    <Grid container justifyContent="center" spacing={2}>
-      {products.map((product, key: number) => (
-        <ProductGridItem key={key} product={product} />
-      ))}
-    </Grid>
-  );
-
   return (
     <main className={classes.main}>
-      {loading ? loadingJsx() : productsJsx()}
+      {loading ? <CardLoader /> : <ProductGrid products={products} />}
     </main>
   );
 }
