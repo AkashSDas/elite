@@ -59,6 +59,11 @@ npm run dev
 
 Follow the steps of `frontend/`
 
+## Postman collections
+
+- Postman collections `backend_playground/` apis are in `backend_playground/elite.postman_collection`
+- Postman collections `backend/` apis are in `backend/elite.postman_collection`
+
 ## To do
 
 - Complete the `frontend/` part
