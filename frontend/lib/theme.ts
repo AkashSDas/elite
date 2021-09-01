@@ -14,6 +14,7 @@ const materialUITheme = createTheme({
     fontFamily: "Rubik, sans-serif",
     h1: { fontFamily: "Playfair Display, serif", fontWeight: 700 },
     h4: { fontFamily: "Playfair Display, serif", fontWeight: 700 },
+    h5: { fontFamily: "Playfair Display, serif", fontWeight: 700 },
   },
 });
 
