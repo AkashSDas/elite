@@ -58,13 +58,20 @@ function SideDrawer({ open, toggleDrawer }: Props) {
 
   const navItem = (item: NavItemData, key: number) =>
     item.isBtn ? (
-      <Container>
-        {item.getSimpleBtn(async () => {
-          if (item.text === "Logout") {
-            await logout(() => toast.success("Successfully logged out"));
-          }
-          router.push(item.route);
-        }, "100%")}
+      <Container key={key}>
+        <SimpleBtn
+          key={key}
+          text={item.text}
+          onClick={async () => {
+            /// If btn is logout then logout user
+            if (item.text === "Logout") {
+              await logout(() => toast.success("Successfully logged out"));
+            }
+
+            router.push(item.route);
+          }}
+          width="100%"
+        />
       </Container>
     ) : (
       <Link href={item.route} key={key}>
