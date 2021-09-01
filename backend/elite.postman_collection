@@ -1,0 +1,986 @@
+{
+	"info": {
+		"_postman_id": "f80e0715-8889-45f2-9016-812af8e63350",
+		"name": "Elite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign up",
+					"item": [
+						{
+							"name": "Create new user with correct details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Ron\",\r\n    \"email\": \"ron@gmail.com\",\r\n    \"password\": \"testing\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create user with wrong details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"James Bond\",\r\n    \"email\": \"james@gmail.com\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "Logout user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login with correct details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"james@gmail.com\",\r\n    \"password\": \"testing\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login with wrong password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"tim@gmail.com\",\r\n    \"password\": \"wrong password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login with wrong email - user doesn't exists",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"nouser@gmail.com\",\r\n    \"password\": \"wrong password\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get all users",
+					"item": [
+						{
+							"name": "Cursor paginated",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3MjkyMzV9.C3FcPiAwW7GieDZ704RxN5c3BtTwQIdBefUTuUv_T4o",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/user/61225720ce622445bc86ed5b/all-users?limit=4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"61225720ce622445bc86ed5b",
+										"all-users"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cursor paginated - which has next and limit params",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3MjkyMzV9.C3FcPiAwW7GieDZ704RxN5c3BtTwQIdBefUTuUv_T4o",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/user/61225720ce622445bc86ed5b/all-users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"61225720ce622445bc86ed5b",
+										"all-users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update user",
+					"item": [
+						{
+							"name": "Update user with correct data",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3MjkyMzV9.C3FcPiAwW7GieDZ704RxN5c3BtTwQIdBefUTuUv_T4o",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Bond James Bond\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/user/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update user that does not exists",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3MjkyMzV9.C3FcPiAwW7GieDZ704RxN5c3BtTwQIdBefUTuUv_T4o",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Bond James Bond\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/user/wrong-user-id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"wrong-user-id"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create new category",
+					"item": [
+						{
+							"name": "Create category with correct data",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3NzI1NTl9.gjfOqS2e10-BzRTQjNxZ-IPx8_8toReLhL9dardF7cY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Summer 101\",\r\n    \"description\": \"For summer 12/04/2001 to 12/05/2001 the first collection of summer products\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/category/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create category with missing data",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3NzI1NTl9.gjfOqS2e10-BzRTQjNxZ-IPx8_8toReLhL9dardF7cY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Summer 101\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/category/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update category",
+					"item": [
+						{
+							"name": "Update category with correct data",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3Nzc2Njl9.46lsTo1IMufKCetHyhjhm2o-KB4gHYK5FvE2fibnasc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Summer\",\r\n    \"description\": \"For summer 12/04/2001 to 12/05/2001 the first collection of summer products\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/category/61245c0abafc9a45fc15a561/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61245c0abafc9a45fc15a561",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete category",
+					"item": [
+						{
+							"name": "Update category with correct data",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3Nzc2Njl9.46lsTo1IMufKCetHyhjhm2o-KB4gHYK5FvE2fibnasc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/category/612475f44ce1885aa07860e1/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"612475f44ce1885aa07860e1",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get category",
+					"item": [
+						{
+							"name": "Get individual category",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3Nzc2Njl9.46lsTo1IMufKCetHyhjhm2o-KB4gHYK5FvE2fibnasc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/category/61245c0abafc9a45fc15a561/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61245c0abafc9a45fc15a561",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all categories",
+					"item": [
+						{
+							"name": "Get all categories with authenticated user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3Nzc2Njl9.46lsTo1IMufKCetHyhjhm2o-KB4gHYK5FvE2fibnasc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/category/61225720ce622445bc86ed5b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61225720ce622445bc86ed5b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all categories with user that does not exists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3Nzc2Njl9.46lsTo1IMufKCetHyhjhm2o-KB4gHYK5FvE2fibnasc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/category/61225720ce622445bc86ed5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"category",
+										"61225720ce622445bc86ed5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create product with correct details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Testing",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Testing product",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "99",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "6124a5a3de5aeb5fe083a646",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/tmp/user-data/projects/big_projects/elite/unsplash_imgs/tshirts/img-4.jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/product/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product with correct details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Updated description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/product/61250e1dff0fff64c0115254/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"61250e1dff0fff64c0115254",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product with correct details",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/product/61252552173b714cacc774e5/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"61252552173b714cacc774e5",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/product?limit=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all unique categories using product model",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/product/categories/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product",
+								"categories",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create order with correct data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order\": {\r\n        \"products\": [\r\n            {\r\n                \"name\": \"New cloth\",\r\n                \"count\": 10,\r\n                \"price\": 99,\r\n                \"product\": \"6125af818db2bf3a24382b2e\"\r\n            },\r\n            {\r\n                \"name\": \"Second cloth\",\r\n                \"count\": 1,\r\n                \"price\": 123,\r\n                \"product\": \"61252343525adf7ba4dac866\"\r\n            }\r\n        ],\r\n        \"transactionId\": {\r\n            \"id\": \"random-id\"\r\n        },\r\n        \"amount\": 1022,\r\n        \"address\": \"Fake address\",\r\n        \"user\": \"61225720ce622445bc86ed5b\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/order/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create order with wrong data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order\": {\r\n        \"products\": [\r\n            {\r\n                \"name\": \"New cloth\",\r\n                \"count\": 10,\r\n                \"price\": 99\r\n            },\r\n            {\r\n                \"name\": \"Second cloth\",\r\n                \"count\": 1,\r\n                \"price\": 123,\r\n                \"product\": \"61252343525adf7ba4dac866\"\r\n            }\r\n        ],\r\n        \"transactionId\": {\r\n            \"id\": \"random-id\"\r\n        },\r\n        \"amount\": 1022,\r\n        \"address\": \"Fake address\",\r\n        \"user\": \"61225720ce622445bc86ed5b\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/order/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/order/61225720ce622445bc86ed5b/612634373147066a1c5deed3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"61225720ce622445bc86ed5b",
+								"612634373147066a1c5deed3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/order/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order status enum values",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/order/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIyNTcyMGNlNjIyNDQ1YmM4NmVkNWIiLCJpYXQiOjE2Mjk3OTkzMzh9.GaWvdJ1IgHhT6mKVyhmOIMxyh03M74UdjWZsidO_kjo",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"2\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/order/612634895b6481741840f138/status/61225720ce622445bc86ed5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"612634895b6481741840f138",
+								"status",
+								"61225720ce622445bc86ed5b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
