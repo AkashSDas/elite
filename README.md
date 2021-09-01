@@ -6,6 +6,59 @@ The main project is in `frontend/` and `backend/`. `backend_playground` and `fro
 
 **Braintree** payment gateway is used in `frontend_playground` and `backend_playground/`
 
+## Getting started
+
+### backend/
+
+Setup firebase project for this project and get the service account key json file and add it at the root of `backend/` and rename the file to `serviceAccountKey.json` (you can change the name but don't forget to update it in `backend/src/firebase.ts` require statement for serviceAccount)
+
+Create `.env` file in the root of `backend/` and the following env variables
+
+```.env
+MONGODB_CONNECT_URL=""
+SECRET_KEY=""
+STRIPE_SECRET=""
+FIREBASE_STORAGE_BUCKET=""
+```
+
+Go to terminal and run the following command to start the server
+
+```bash
+npm run dev
+```
+
+### frontend/
+
+Create `.env.local` in the root of `frontend/` and add the following env variables. Update `NEXT_PUBLIC_BACKEND_API_BASE_URL` if you've changed backend api url.
+
+```.env
+NEXT_PUBLIC_BACKEND_API_BASE_URL="http://localhost:8000/api"
+NEXT_PUBLIC_STRIPE_KEY=""
+```
+
+### backend_playground/
+
+Create `.env` file in the root of `backend_playground/` and the following env variables
+
+```.env
+MONGODB_CONNECT_URL=""
+SECRET_KEY=""
+STRIPE_SECRET=""
+BRAINTREE_PUBLIC_KEY=""
+BRAINTREE_MERCHANT_ID=""
+BRAINTREE_PRIVATE_KEY=""
+```
+
+Go to terminal and run the following command to start the server
+
+```bash
+npm run dev
+```
+
+### frontend_playground/
+
+Follow the steps of `frontend/`
+
 ## To do
 
 - Complete the `frontend/` part
